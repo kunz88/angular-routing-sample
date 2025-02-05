@@ -1,7 +1,16 @@
-<ul id="users">
-  @for (user of users; track user.id) {
-  <li>
-    <app-user [user]="user" />
-  </li>
-  }
-</ul>
+<div class="search-container">
+  <input
+    type="text"
+    #inputTextValue
+    (input)="search(inputTextValue.value)"
+    class="search-input"
+    placeholder="Search..."
+  />
+  <ul id="users">
+    @for (user of users; track user.id) {
+    <li>
+      <app-user [user]="user" />
+    </li>
+    }
+  </ul>
+</div>

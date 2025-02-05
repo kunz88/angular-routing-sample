@@ -1,3 +1,25 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.search-input {
+  padding: 0.5rem;
+  color: aliceblue;
+  font-style: inherit;
+  background-color: #3a2c54;
+  font-size: 1rem;
+  line-height: 1.1rem;
+  font-weight: 400;
+  border-radius: calc(6 / 16 * 1rem);
+}
+::placeholder {
+  color: #c3b3d8;
+  opacity: 1; /* Firefox */
+  font-style: inherit;
+}
+
 ul {
   list-style: none;
   margin: 0;
