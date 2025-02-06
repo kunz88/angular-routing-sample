@@ -1,5 +1,8 @@
+<a routerLink="./" [queryParams]="{ order: order() === 'asc' ? 'desc' : 'asc' }"
+  >order</a
+>
 <ul>
-  @for (task of userTasks; track task.id) {
+  @for (task of userTasks(); track task.id) {
   <li>
     <app-task [task]="task" />
   </li>

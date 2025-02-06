@@ -1,7 +1,7 @@
 #tasks {
   padding: 1rem;
   border-radius: 8px;
-  max-height: 60vh;
+  max-height: 100vh;
   overflow: auto;
   background-color: #3a2c54;
 }
@@ -40,7 +40,7 @@ menu a {
 
 menu a:hover,
 menu a:active {
-  background-color: #a565dd
+  background-color: #a565dd;
 }
 
 @media (min-width: 768px) {

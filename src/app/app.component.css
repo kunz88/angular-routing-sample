@@ -1,4 +1,6 @@
 main {
+  height: 100vh;
+  padding: 2rem;
   width: 90%;
   max-width: 50rem;
   margin: 2.5rem auto;
