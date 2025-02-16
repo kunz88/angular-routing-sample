@@ -1,17 +1,6 @@
 main {
   height: 100vh;
   padding: 2rem;
-  width: 90%;
-  max-width: 50rem;
-  margin: 2.5rem auto;
-  display: grid;
-  grid-auto-flow: row;
-  gap: 2rem;
-}
-
-@media (min-width: 768px) {
-  main {
-    margin: 4rem auto;
-    grid-template-columns: 1fr 3fr;
-  }
+  width: 100%;
+  margin: 0 auto;
 }

@@ -1,0 +1,125 @@
+<form [formGroup]="filterForm">
+  <div class="w-full space-y-4">
+    <div class="form-control">
+      <div class="input-group">
+        <label class="input input-bordered flex items-center gap-2">
+          <input
+            type="text"
+            class="grow"
+            placeholder="Cerca qualcosa ..."
+            formControlName="query"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </label>
+      </div>
+    </div>
+
+    <div class="flex justify-between items-center gap-2">
+      <button class="btn btn-outline btn-sm gap-2" (click)="toggleFilters()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        Filtri @if (activeFilters > 0) {
+        <div class="badge badge-xs">{{ activeFilters }}</div>
+        }
+      </button>
+
+      <select
+        formControlName="sortBy"
+        class="select select-bordered select-sm w-full"
+      >
+        @for (option of sortOptions; track option.value) {
+        <option [value]="option.value">
+          {{ option.label }}
+        </option>
+        }
+      </select>
+    </div>
+
+    <!-- Pannello filtri espandibile -->
+    <div class="collapse p-2" [class.collapse-open]="isFiltersVisible">
+      <div class="collapse-content bg-base-200 rounded-box p-4">
+        <form [formGroup]="filterForm" class="space-y-4">
+          <!-- Categorie -->
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Categoria</span>
+            </label>
+            <select
+              formControlName="category"
+              class="select select-bordered w-3/4"
+            >
+              <option value="">Tutte le categorie</option>
+              @for (cat of categories; track cat.id) {
+              <option [value]="cat.id">{{ cat.label }}</option>
+              }
+            </select>
+          </div>
+
+          <!-- Range di prezzo -->
+          <label class="label">
+            <span class="label-text">Prezzo</span>
+          </label>
+          <div class="form-control gap-2">
+            <input
+              type="text"
+              formControlName="min"
+              (input)="onPriceInput($event, 'min')"
+              placeholder="Min €"
+              class="input input-bordered"
+            />
+            <input
+              type="text"
+              formControlName="max"
+              (input)="onPriceInput($event, 'max')"
+              placeholder="Max €"
+              class="input input-bordered"
+            />
+          </div>
+
+          <!-- Località -->
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Località</span>
+            </label>
+            <input
+              type="text"
+              formControlName="location"
+              placeholder="Inserisci località"
+              class="input input-bordered"
+            />
+          </div>
+
+          <!-- Reset button -->
+          <button
+            type="button"
+            class="btn btn-outline btn-block"
+            (click)="resetFilters()"
+          >
+            Reimposta filtri
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</form>

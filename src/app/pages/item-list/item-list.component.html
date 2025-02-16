@@ -1,0 +1,52 @@
+<!-- components/item-list/item-list.component.html -->
+<div class="grid grid-cols-12 gap-2">
+  <!-- Sidebar con filtri -->
+  <div class="col-span-12 md:col-span-3">
+    <app-search-filters
+      (filterChange)="applyFilters($event)"
+    ></app-search-filters>
+  </div>
+
+  <!-- Lista items -->
+  <div class="col-span-12 md:col-start-5">
+    @if (loading) {
+    <div class="flex justify-center items-center text-secondary h-full">
+      <span class="loading loading-spinner loading-lg"></span>
+    </div>
+    } @else {
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      @for (item of items; track item.id) {
+      <div
+        class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow"
+      >
+        <figure>
+          <img
+            [src]="item.images"
+            [alt]="item.title"
+            class="w-full h-48 object-cover"
+          />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">{{ item.title }}</h2>
+          <p class="text-2xl font-bold text-primary">€{{ item.price }}</p>
+          <p>{{ item.location }}</p>
+          <div class="card-actions justify-end">
+            <button
+              class="btn btn-success btn-ghost"
+              [routerLink]="['/items', item.id]"
+            >
+              Visualizza
+            </button>
+          </div>
+        </div>
+      </div>
+      } @empty {
+      <div class="col-span-full text-center py-8">
+        <h3 class="text-xl font-semibold mb-2">Nessun risultato trovato</h3>
+        <p class="text-gray-600">Prova a modificare i filtri di ricerca</p>
+      </div>
+      }
+    </div>
+    }
+  </div>
+</div>

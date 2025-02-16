@@ -1,0 +1,54 @@
+<div class="flex justify-center items-center flex-1">
+  <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <div
+      class="card bg-base-100 w-96 shadow-xl flex gap-5 flex-col p-6 pt-8 pb-8"
+    >
+      <h2 class="card-title">Benvenuto</h2>
+      <label class="form-control w-full max-w-xs" for="email">
+        <div class="label">
+          <span class="label-text">Email</span>
+        </div>
+        <input
+          name="email"
+          id="email"
+          type="text"
+          placeholder="Type here"
+          class="input input-bordered w-full"
+          formControlName="email"
+        />
+        @if(emailIsInvalid){
+        <div class="label">
+          <small class="label-text text-error">Email non valida</small>
+        </div>
+        }
+      </label>
+
+      <label class="form-control w-full" for="password">
+        <div class="label">
+          <span class="label-text">Password</span>
+        </div>
+        <input
+          formControlName="password"
+          type="password"
+          class="input input-bordered w-full max-w-xs"
+          id="password"
+        />
+        @if(passwordIsInvalid){
+        <div class="label">
+          <small class="label-text text-error">password non valida</small>
+        </div>
+        } @if(loginError()){
+        <div class="label">
+          <small class="label-text text-error">password o email non valida</small>
+        </div>
+        }
+        <div class="label">
+          <span class="label-text"> Hai dimenticato la password?</span>
+        </div>
+      </label>
+      <div class="card-actions justify-end mt-2 mb-6">
+        <button class="btn btn-sm btn-primary" type="submit">Login</button>
+      </div>
+    </div>
+  </form>
+</div>
