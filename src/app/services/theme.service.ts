@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
 
-type Theme = 'forest' | 'autumn';
+type Theme = 'dark' | 'light';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class ThemeService {
   setTheme() {
     const theme =
       this.document.documentElement.getAttribute('data-theme') === 'autumn'
-        ? 'forest'
+        ? 'retro'
         : 'autumn';
     this.document.documentElement.setAttribute('data-theme', theme);
   }

@@ -4,10 +4,10 @@ import { RouterOutlet } from '@angular/router';
 import { UsersComponent } from '../../users/users.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-chat',
   standalone: true,
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css',
   imports: [UsersComponent, RouterOutlet],
 })
-export class AppComponent {}
+export class ChatComponent {}

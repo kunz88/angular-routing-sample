@@ -1,6 +1,10 @@
 <div>
-  <a [routerLink]="['/users', user().id, 'tasks']" routerLinkActive="selected">
+  <div
+    [routerLink]="['/chat', user().id, 'tasks']"
+    routerLinkActive="selected"
+    class="bg-base-200 hover:bg-base-300 user-container"
+  >
     <img [src]="imagePath()" [alt]="user().name" />
     <span>{{ user().name }}</span>
-  </a>
+  </div>
 </div>

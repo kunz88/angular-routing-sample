@@ -1,9 +1,54 @@
 <section id="tasks">
-  <header>
-    <h2>{{ userName() }} Tasks</h2>
-    <menu>
-      <a [routerLink]="['tasks/new']">Add Task</a>
-    </menu>
-  </header>
-  <router-outlet />
+  <div class="flex flex-col h-screen">
+    <!-- Header -->
+    <div class="p-4">
+      <h1 class="text-xl font-semibold">{{ userName() }}</h1>
+    </div>
+
+    <!-- Messages Container -->
+    <div class="flex-1 overflow-y-auto p-4 space-y-4">
+      @for (message of messages(); track message.id) {
+      <div
+        class="chat"
+        [class]="message.sender === 'user' ? 'chat-end' : 'chat-start'"
+      >
+        <div class="chat-image avatar">
+          <div class="w-10 rounded-full">
+            <img
+              alt="Tailwind CSS chat bubble component"
+              [src]="
+                message.sender === 'user'
+                  ? 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
+                  : userAvatar()
+              "
+            />
+          </div>
+        </div>
+        <div class="chat-header">
+          {{ message.sender === "user" ? "You" : userName() }}
+          <time class="text-xs opacity-50">{{ message.timestamp }}</time>
+        </div>
+        <div class="chat-bubble">{{ message.text }}</div>
+        <div class="chat-footer opacity-50">Delivered</div>
+      </div>
+
+      } @if (messages().length === 0) {
+      <div class="text-center text-gray-500">Nessun messaggio</div>
+      }
+    </div>
+
+    <!-- Input Area -->
+    <div class="bg-white p-4 shadow-lg">
+      <div class="flex space-x-2">
+        <input
+          type="text"
+          [(ngModel)]="newMessage"
+          (keyup.enter)="sendMessage()"
+          placeholder="Scrivi un messaggio..."
+          class="flex-1 border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-500"
+        />
+        <button (click)="sendMessage()" class="btn">Invia</button>
+      </div>
+    </div>
+  </div>
 </section>

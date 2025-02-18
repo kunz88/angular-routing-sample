@@ -1,3 +1,9 @@
 .navbar-start {
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .responsive-hidden {
+    display: none;
+  }
+}

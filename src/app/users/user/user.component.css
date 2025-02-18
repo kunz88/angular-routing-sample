@@ -4,13 +4,11 @@ div {
   overflow: hidden;
 }
 
-a {
+.user-container {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.5rem;
-  background-color: #433352;
-  color: #c3b3d1;
+  padding: 0.5rem 1rem;
   border: none;
   font: inherit;
   cursor: pointer;
@@ -20,15 +18,13 @@ a {
   text-decoration: none;
 }
 
-a:hover,
-a:active,
 .selected {
-  background-color: #9965dd;
-  color: #150722;
+  color: #fff;
+  background-color: #2b3440;
 }
 
 img {
-  width: 2rem;
+  width: 3rem;
   object-fit: contain;
   border-radius: 50%;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
@@ -37,6 +33,6 @@ img {
 span {
   margin: 0;
   padding: 0;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: normal;
 }

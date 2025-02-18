@@ -1,7 +1,7 @@
 <div class="flex justify-center items-center flex-1">
   <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
     <div
-      class="card bg-base-100 w-96 shadow-xl flex gap-5 flex-col p-6 pt-8 pb-8"
+      class="card bg-base-100 w-96 shadow-xl shadow-secondary flex gap-5 flex-col p-6 pt-8 pb-8"
     >
       <h2 class="card-title">Benvenuto</h2>
       <label class="form-control w-full max-w-xs" for="email">
@@ -39,7 +39,9 @@
         </div>
         } @if(loginError()){
         <div class="label">
-          <small class="label-text text-error">password o email non valida</small>
+          <small class="label-text text-error"
+            >password o email non valida</small
+          >
         </div>
         }
         <div class="label">

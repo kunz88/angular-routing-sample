@@ -1,4 +1,3 @@
-// src/app/services/item.service.ts
 import { inject, Injectable, signal } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
@@ -39,16 +38,17 @@ export class ItemService {
         );
       }
 
-      if (filters.location) {
-        const location = filters.location.toLowerCase();
+      if (filters.gender) {
+        const gender = filters.gender?.toLowerCase();
         filteredItems = filteredItems.filter((item) =>
-          item.location.toLowerCase().includes(location)
+          item.gender.toLowerCase().includes(gender)
         );
       }
 
       if (filters.category) {
+        console.log(filters.category);
         filteredItems = filteredItems.filter(
-          (item) => item.category === filters.category
+          (item) => item.category === filters.category?.toLocaleLowerCase()
         );
       }
 

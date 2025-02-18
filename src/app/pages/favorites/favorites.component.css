@@ -1,0 +1,14 @@
+.cart {
+  align-self: end;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  gap: 1rem;
+  width: 33%;
+}
+
+.hidden {
+  display: none;
+}

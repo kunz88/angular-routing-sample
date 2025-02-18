@@ -4,8 +4,9 @@ export interface Item {
   price: number;
   description: string;
   category: string;
-  location: string;
+  location?: string;
   images: string;
+  gender: string;
   seller: {
     name: string;
     rating: number;
@@ -18,6 +19,6 @@ export interface ItemFilters {
   category?: string;
   priceMin?: number;
   priceMax?: number;
-  location?: string;
+  gender?: string;
   sortBy?: 'date_desc' | 'price_asc' | 'price_desc';
 }

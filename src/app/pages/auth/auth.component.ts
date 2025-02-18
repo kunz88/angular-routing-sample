@@ -20,6 +20,7 @@ export class AuthComponent {
   private routerService = inject(Router);
 
   loginError = signal(false);
+
   authForm = new FormGroup({
     email: new FormControl('', {
       validators: [Validators.required, Validators.email],
@@ -85,9 +86,10 @@ export class AuthComponent {
         'saved-login-form',
         JSON.stringify({ email: this.authForm.get('email')?.value })
       );
+      window.localStorage.setItem('tokenZalando', 'longlistofcharacters');
       this.loginError.set(false);
 
-      this.routerService.navigate(['items']);
+      this.routerService.navigate(['add']);
     }
 
     this.loginError.set(true);

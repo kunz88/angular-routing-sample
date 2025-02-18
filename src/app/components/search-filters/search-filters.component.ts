@@ -1,4 +1,3 @@
-// components/search-filters/search-filters.component.ts
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
@@ -18,13 +17,15 @@ export class SearchFiltersComponent implements OnInit {
   isFiltersVisible = false;
 
   readonly categories = [
-    { id: 'electronics', label: 'Elettronica' },
-    { id: 'vehicles', label: 'Veicoli' },
-    { id: 'clothing', label: 'Abbigliamento' },
-    { id: 'home-garden', label: 'Casa e Giardino' },
-    { id: 'sports', label: 'Sport' },
-    { id: 'other', label: 'Altri' },
+    { id: 'tutine', label: 'Tutine' },
+    { id: 'pigiami', label: 'Pigiami' },
+    { id: 'scarpe', label: 'Scarpe' },
+    { id: 'vestiti', label: 'Vestiti' },
+    { id: 'sport', label: 'Sport' },
+    { id: 'altri', label: 'Altri' },
   ];
+
+  readonly gender = ['boy', 'girl', 'unisex'];
 
   readonly sortOptions = [
     { value: 'date_desc', label: 'Più recenti' },
@@ -50,7 +51,7 @@ export class SearchFiltersComponent implements OnInit {
       category: [''],
       min: [''],
       max: [''],
-      location: [''],
+      gender: [''],
       sortBy: [''],
     });
   }
@@ -90,8 +91,8 @@ export class SearchFiltersComponent implements OnInit {
       filters.priceMax = Number(formValue.max);
     }
 
-    if (formValue.location?.trim()) {
-      filters.location = formValue.location.trim();
+    if (formValue.gender) {
+      filters.gender = formValue.gender;
     }
 
     if (formValue.sortBy) {
@@ -115,7 +116,7 @@ export class SearchFiltersComponent implements OnInit {
       category: '',
       min: '',
       max: '',
-      location: '',
+      gender: '',
       sortBy: 'date_desc',
     });
   }

@@ -3,11 +3,12 @@ import { ItemService } from '../../services/item.service';
 import { Item } from '../../models/item';
 import { take } from 'rxjs';
 import { FavoriteItemsService } from '../../services/favorite-items.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-item-details',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './item-details.component.html',
   styleUrl: './item-details.component.css',
 })
@@ -17,6 +18,7 @@ export class ItemDetailsComponent implements OnInit {
 
   itemService = inject(ItemService);
   favoriteItemsService = inject(FavoriteItemsService);
+  private routerService = inject(Router);
 
   ngOnInit() {
     console.log('id:', this.id());
@@ -30,5 +32,12 @@ export class ItemDetailsComponent implements OnInit {
     this.favoriteItemsService.addItem(this.item!);
 
     console.log(this.favoriteItemsService.favoriteItemsGetter());
+  }
+
+  deleteItem() {
+    this.itemService.deleteItem(+this.id()).subscribe((item) => {
+      console.log(item);
+    });
+    this.routerService.navigate(['items']);
   }
 }

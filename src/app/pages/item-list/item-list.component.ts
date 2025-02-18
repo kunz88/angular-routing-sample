@@ -7,6 +7,7 @@ import { SearchFiltersComponent } from '../../components/search-filters/search-f
 @Component({
   selector: 'app-item-list',
   templateUrl: './item-list.component.html',
+  styleUrls: ['./item-list.component.css'],
   standalone: true,
   imports: [SearchFiltersComponent, RouterLink],
 })
@@ -16,6 +17,7 @@ export class ItemListComponent implements OnInit {
   items: Item[] = [];
   loading = false;
   currentFilters: ItemFilters = {};
+  fakeItems: Item[] = Array(20).fill({});
 
   ngOnInit(): void {
     this.itemService.loadInitialData().subscribe({

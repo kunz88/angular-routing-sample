@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { Item } from '../../models/item';
 import { FavoriteItemsService } from '../../services/favorite-items.service';
 
@@ -13,10 +13,16 @@ export class FavoritesComponent implements OnInit {
   favoriteItems = signal<Item[]>([]);
   favoriteItemsService = inject(FavoriteItemsService);
 
-  ngOnInit() {
-    this.favoriteItemsService.favoriteItemsSetter();
+  removeItem(item: Item) {
+    this.favoriteItemsService.deleteItem(item);
     this.favoriteItems.set(this.favoriteItemsService.favoriteItemsGetter());
+  }
 
-    console.log(this.favoriteItems());
+  totalPrice = computed(() => {
+    return this.favoriteItems().reduce((acc, item) => acc + item.price, 0);
+  });
+
+  ngOnInit() {
+    this.favoriteItems.set(this.favoriteItemsService.favoriteItemsGetter());
   }
 }
